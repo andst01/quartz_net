@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="JobConfiguration\Contracts\**" />
+		<Compile Remove="JobConfiguration\Modelos\**" />
+		<EmbeddedResource Remove="JobConfiguration\Contracts\**" />
+		<EmbeddedResource Remove="JobConfiguration\Modelos\**" />
+		<None Remove="JobConfiguration\Contracts\**" />
+		<None Remove="JobConfiguration\Modelos\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="JobConfiguration\JobConfigProvider.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="Dapper" Version="2.1.28" />
+		<PackageReference Include="IdentityModel" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.14" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.0" />
+		<PackageReference Include="MongoDB.Driver" Version="2.24.0" />
+		<PackageReference Include="Quartz" Version="3.8.1" />
+		<PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+		<PackageReference Include="Serilog.AspNetCore" Version="6.0.0" />
+		<PackageReference Include="Serilog.Sinks.Stackify" Version="3.0.1" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.14" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.14" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.14" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.14" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.Development.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="AutoMapper\" />
+	</ItemGroup>
+
+</Project>
