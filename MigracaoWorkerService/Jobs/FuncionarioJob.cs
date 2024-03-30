@@ -16,18 +16,19 @@ using System.Threading.Tasks;
 
 namespace MigracaoWorkerService.Jobs
 {
-    public class ClienteJob : IJob
+    public class FuncionarioJob : IJob
     {
-        private readonly ILogger<ClienteJob> _logger;
-        private readonly IClienteQueryRepository _repositoryQuery;
+
+        private readonly ILogger<FuncionarioJob> _logger;
+        private readonly IFuncionarioQueryRepository _repositoryQuery;
         private readonly RabbitMqConfiguration _config;
         private readonly IConnection _connection;
         private readonly IModel _channel;
         private readonly IMapper mapper;
 
-        public ClienteJob(ILogger<ClienteJob> logger, 
-                         IClienteQueryRepository repositoryQuery, 
-                         IOptions<RabbitMqConfiguration> config)
+        public FuncionarioJob(ILogger<FuncionarioJob> logger,
+                             IFuncionarioQueryRepository repositoryQuery, 
+                             IOptions<RabbitMqConfiguration> config)
         {
             _logger = logger;
             _repositoryQuery = repositoryQuery;
@@ -41,7 +42,7 @@ namespace MigracaoWorkerService.Jobs
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
             _channel.QueueDeclare(
-                        queue: "clienteQueue",
+                        queue: "funcionarioQueue",
                         durable: false,
                         exclusive: false,
                         autoDelete: false,
@@ -56,20 +57,20 @@ namespace MigracaoWorkerService.Jobs
             {
                 var contentArray = eventArgs.Body.ToArray();
                 var contentString = Encoding.UTF8.GetString(contentArray);
-                var message = JsonConvert.DeserializeObject<ClienteQuery>(contentString);
+                var message = JsonConvert.DeserializeObject<FuncionarioQuery>(contentString);
 
                 _repositoryQuery.Add(message);
 
                 _channel.BasicAck(eventArgs.DeliveryTag, false);
 
                 //var teste = JsonConvert.SerializeObject(message);
-                _logger.LogInformation($"[{nameof(ClienteJob)}].[log de informações de Cliente] response : {JsonConvert.SerializeObject(message)}");
-                _logger.LogInformation($"[{nameof(ClienteJob)}].[log de informações de Cliente] contadores data hora : {DateTime.Now.ToString()}");
+                _logger.LogInformation($"[{nameof(FuncionarioJob)}].[log de informações de Funcionario] response : {JsonConvert.SerializeObject(message)}");
+                _logger.LogInformation($"[{nameof(FuncionarioJob)}].[log de informações de Funcionario] contadores data hora : {DateTime.Now.ToString()}");
 
 
             };
 
-            _channel.BasicConsume("clienteQueue", false, consumer);
+            _channel.BasicConsume("funcionarioQueue", false, consumer);
 
             return Task.CompletedTask;
         }
