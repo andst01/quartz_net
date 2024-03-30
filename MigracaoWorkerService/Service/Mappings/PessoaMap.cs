@@ -19,21 +19,21 @@ namespace MigracaoWorkerService.Service.Mappings
 
             builder.HasKey(x => x.Id).HasName("PK_PESS");
 
-            builder.Property(x => x.Observacao).HasColumnName("PESS_OBSERVACAO");
+            builder.Property(x => x.Observacao).HasColumnName("PESS_OBSERVACAO").IsRequired(false);
 
-            builder.Property(x => x.Celular).HasColumnName("PESS_CELULAR");
+            builder.Property(x => x.Celular).HasColumnName("PESS_CELULAR").IsRequired(false);
 
-            builder.Property(x => x.DataAlteracao).HasColumnName("PESS_DATA_ALTERACAO");
+            builder.Property(x => x.DataAlteracao).HasColumnName("PESS_DATA_ALTERACAO").IsRequired(false);
 
             builder.Property(x => x.DataCadastro).HasColumnName("PESS_DATA_CADASTRO");
 
-            builder.Property(x => x.EhEstrangeiro).HasColumnName("PESS_ESTRANGEIRO");
+            builder.Property(x => x.EhEstrangeiro).HasColumnName("PESS_ESTRANGEIRO").IsRequired(false);
 
-            builder.Property(x => x.Telefone).HasColumnName("PESS_TELEFONE");
+            builder.Property(x => x.Telefone).HasColumnName("PESS_TELEFONE").IsRequired(false);
 
-            builder.Property(x => x.Email).HasColumnName("PESS_EMAIL");
+            builder.Property(x => x.Email).HasColumnName("PESS_EMAIL").IsRequired(false);
 
-            builder.Property(x => x.IdUsuario).HasColumnName("PESS_ID_USUARIO");
+            builder.Property(x => x.IdUsuario).HasColumnName("PESS_ID_USUARIO"); 
 
             // builder.Navigation(x => x.Funcionario).AutoInclude();
 

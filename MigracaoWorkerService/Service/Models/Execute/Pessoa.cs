@@ -9,12 +9,12 @@ namespace MigracaoWorkerService.Service.Models.Execute
     public class Pessoa
     {
         public int Id { get; set; }
-        public bool EhEstrangeiro { get; set; }
+        public bool? EhEstrangeiro { get; set; }
 
         public string Observacao { get; set; }
 
         public DateTime DataCadastro { get; set; }
-        public DateTime DataAlteracao { get; set; }
+        public DateTime? DataAlteracao { get; set; }
 
         public string Telefone { get; set; }
         public string Celular { get; set; }

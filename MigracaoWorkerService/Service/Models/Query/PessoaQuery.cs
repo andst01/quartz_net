@@ -15,7 +15,7 @@ namespace MigracaoWorkerService.Service.Models.Query
         public override int Id { get; set; }
 
         [BsonElement("PESS_ESTRANGEIRO")]
-        public bool EhEstrangeiro { get; set; }
+        public bool? EhEstrangeiro { get; set; }
 
         [BsonElement("PESS_OBSERVACAO")]
         public string Observacao { get; set; }
@@ -24,7 +24,7 @@ namespace MigracaoWorkerService.Service.Models.Query
         public DateTime DataCadastro { get; set; }
 
         [BsonElement("PESS_DATA_ALTERACAO")]
-        public DateTime DataAlteracao { get; set; }
+        public DateTime? DataAlteracao { get; set; }
 
         [BsonElement("PESS_TELEFONE")]
         public string Telefone { get; set; }

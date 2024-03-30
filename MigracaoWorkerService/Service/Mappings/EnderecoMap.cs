@@ -21,15 +21,15 @@ namespace MigracaoWorkerService.Service.Mappings
 
             builder.Property(x => x.Bairro).HasColumnName("ENDE_BAIRRO");
 
-            builder.Property(x => x.Complemento).HasColumnName("ENDE_COMPLEMENTO");
+            builder.Property(x => x.Complemento).HasColumnName("ENDE_COMPLEMENTO").IsRequired(false);
 
             builder.Property(x => x.Logradouro).HasColumnName("ENDE_LOGRADOURO");
 
-            builder.Property(x => x.Numero).HasColumnName("ENDE_NUMERO");
+            builder.Property(x => x.Numero).HasColumnName("ENDE_NUMERO").IsRequired(false);
 
             builder.Property(x => x.IdCidade).HasColumnName("ENDE_ID_CIDADE");
 
-            builder.Property(x => x.Cep).HasColumnName("ENDE_CEP");
+            builder.Property(x => x.Cep).HasColumnName("ENDE_CEP").IsRequired(false);
 
             //builder.HasOne(x => x.Cidade)
             //       .WithMany(x => x.Endereco)

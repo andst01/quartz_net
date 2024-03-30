@@ -16,18 +16,18 @@ using System.Threading.Tasks;
 
 namespace MigracaoWorkerService.Jobs
 {
-    public class PessoaJob : IJob
+    public class EnderecoJob : IJob
     {
-        private readonly ILogger<PessoaJob> _logger;
-        private readonly IPessoaQueryRepository _repositoryQuery;
+
+        private readonly ILogger<EnderecoJob> _logger;
+        private readonly IEnderecoQueryRepository _repositoryQuery;
         private readonly RabbitMqConfiguration _config;
         private readonly IConnection _connection;
         private readonly IModel _channel;
         private readonly IMapper mapper;
 
-        public PessoaJob(ILogger<PessoaJob> logger, 
-                        IPessoaQueryRepository repositoryQuery, 
-                        IOptions<RabbitMqConfiguration> config)
+        public EnderecoJob(ILogger<EnderecoJob> logger, 
+                          IEnderecoQueryRepository repositoryQuery, IOptions<RabbitMqConfiguration> config)
         {
             _logger = logger;
             _repositoryQuery = repositoryQuery;
@@ -41,7 +41,7 @@ namespace MigracaoWorkerService.Jobs
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
             _channel.QueueDeclare(
-                        queue: "pessoaQueue",
+                        queue: "enderecoQueue",
                         durable: false,
                         exclusive: false,
                         autoDelete: false,
@@ -56,20 +56,20 @@ namespace MigracaoWorkerService.Jobs
             {
                 var contentArray = eventArgs.Body.ToArray();
                 var contentString = Encoding.UTF8.GetString(contentArray);
-                var message = JsonConvert.DeserializeObject<PessoaQuery>(contentString);
+                var message = JsonConvert.DeserializeObject<EnderecoQuery>(contentString);
 
-                 _repositoryQuery.Add(message);
+                _repositoryQuery.Add(message);
 
                 _channel.BasicAck(eventArgs.DeliveryTag, false);
 
                 //var teste = JsonConvert.SerializeObject(message);
-                _logger.LogInformation($"[{nameof(PessoaJob)}].[log de informações de Pessoa] response : {JsonConvert.SerializeObject(message)}");
-                _logger.LogInformation($"[{nameof(PessoaJob)}].[log de informações de Pessoa] contadores data hora : {DateTime.Now.ToString()}");
+                _logger.LogInformation($"[{nameof(EnderecoJob)}].[log de informações de Endereco] response : {JsonConvert.SerializeObject(message)}");
+                _logger.LogInformation($"[{nameof(EnderecoJob)}].[log de informações de Endereco] contadores data hora : {DateTime.Now.ToString()}");
 
 
             };
 
-            _channel.BasicConsume("pessoaQueue", false, consumer);
+            _channel.BasicConsume("enderecoQueue", false, consumer);
 
             return Task.CompletedTask;
         }

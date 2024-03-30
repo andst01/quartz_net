@@ -18,6 +18,8 @@ namespace MigracaoWorkerService.Context
 
         public DbSet<Pessoa> Pessoa { get; set; }
 
+        public DbSet<Endereco> Endereco { get; set; }
+
         public DbSet<Cliente> Cliente { get; set; }
 
         public DbSet<Funcionario> Funcionario { get; set; }
@@ -54,6 +56,7 @@ namespace MigracaoWorkerService.Context
             modelBuilder.ApplyConfiguration(new FuncaoMap());
             modelBuilder.ApplyConfiguration(new FuncaoUsuarioMap());
             modelBuilder.ApplyConfiguration(new ClienteMap());
+            modelBuilder.ApplyConfiguration(new EnderecoMap());
             modelBuilder.ApplyConfiguration(new FornecedorMap());
             modelBuilder.ApplyConfiguration(new FuncionarioMap());
             modelBuilder.ApplyConfiguration(new FornecedorMap());

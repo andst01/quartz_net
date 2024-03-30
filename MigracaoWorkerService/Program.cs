@@ -88,6 +88,10 @@ namespace MigracaoWorkerService
                    services.AddSingleton<FuncaoJob>();
                    services.AddSingleton<FuncaoUsuarioQueueJob>();
                    services.AddSingleton<FuncaoUsuarioJob>();
+                   services.AddSingleton<PessoaQueueJob>();
+                   services.AddSingleton<PessoaJob>();
+                   services.AddSingleton<EnderecoQueueJob>();
+                   services.AddSingleton<EnderecoJob>();
                    
 
 
@@ -170,6 +174,10 @@ namespace MigracaoWorkerService
 
                    services.AddTransient<ICargoFuncionarioRepository, CargoFuncionarioRepository>();
                    services.AddTransient<ICargoFuncionarioQueryRepository, CargoFuncionarioQueryRepository>();
+
+
+                   services.AddTransient<IEnderecoRepository, EnderecoRepository>();
+                   services.AddTransient<IEnderecoQueryRepository, EnderecoQueryRepository>();
 
                    services.AddTransient<IEmpresaRepository, EmpresaRepository>();
                    services.AddTransient<IEmpresaQueryRepository, EmpresaQueryRepository>();
