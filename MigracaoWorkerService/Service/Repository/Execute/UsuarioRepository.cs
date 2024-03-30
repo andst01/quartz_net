@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MigracaoWorkerService.Service.Repository.Execute
 {
-    public class UsuarioRepository : RepositoryBase<Funcao>, IUsuarioRepository
+    public class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
     {
         public UsuarioRepository(SQLContexto db) : base(db)
         {

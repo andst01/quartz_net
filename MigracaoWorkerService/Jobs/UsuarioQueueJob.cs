@@ -24,7 +24,7 @@ namespace MigracaoWorkerService.Jobs
             _repository = repository;
         }
 
-        public new List<Funcao> listaUsuario { get; set; }
+        public new List<Usuario> listaUsuario { get; set; }
 
         public int contadorGeral { get; set; } = 0;
 
@@ -32,10 +32,12 @@ namespace MigracaoWorkerService.Jobs
 
         public Task Execute(IJobExecutionContext context)
         {
-            var retorno = new List<Funcao>();
+            var retorno = new List<Usuario>();
+
+            List<int> ids =  new List<int>() { 5, 6, 7 };
 
             if(qtdRegistros == 0)
-                 retorno = _repository.ObterTodos().ToList();
+                 retorno = _repository.ObterTodos().Where(x => !ids.Contains(x.Id)).ToList();
 
             qtdRegistros = retorno.Count();
 

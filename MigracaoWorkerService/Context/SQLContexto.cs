@@ -51,7 +51,7 @@ namespace MigracaoWorkerService.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+           
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new FuncaoMap());
             modelBuilder.ApplyConfiguration(new FuncaoUsuarioMap());
@@ -68,6 +68,8 @@ namespace MigracaoWorkerService.Context
             modelBuilder.ApplyConfiguration(new ServicoMap());
             modelBuilder.ApplyConfiguration(new AgendaMap());
             modelBuilder.ApplyConfiguration(new AgendamentoMap());
+
+            base.OnModelCreating(modelBuilder);
 
 
         }

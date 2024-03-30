@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MigracaoWorkerService.Service.Repository.Execute.Interface
 {
-    public interface IUsuarioRepository : IRepositoryBase<Funcao>
+    public interface IUsuarioRepository : IRepositoryBase<Usuario>
     {
     }
 }

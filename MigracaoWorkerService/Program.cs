@@ -92,6 +92,8 @@ namespace MigracaoWorkerService
                    services.AddSingleton<PessoaJob>();
                    services.AddSingleton<EnderecoQueueJob>();
                    services.AddSingleton<EnderecoJob>();
+                   services.AddSingleton<ClienteQueueJob>();
+                   services.AddSingleton<ClienteJob>();
                    
 
 

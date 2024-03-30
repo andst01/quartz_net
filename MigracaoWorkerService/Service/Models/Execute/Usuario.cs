@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MigracaoWorkerService.Service.Models.Execute
 {
-    public class Usuario : IdentityUser
+    public class Usuario : IdentityUser<int>
     {
-        public int Id { get; set; }
+        public override int Id { get; set; }
         public string Password { get; set; }
         public string Genero { get; set; }
         public DateTime DataNascimento { get; set; }
@@ -19,6 +19,7 @@ namespace MigracaoWorkerService.Service.Models.Execute
         public DateTime DataCriacao { get; set; }
         public DateTime DataAlteracao { get; set; }
 
+        //[NotMapped]
         public virtual Pessoa Pessoa { get; set; }
 
         public override DateTimeOffset? LockoutEnd { get; set; }

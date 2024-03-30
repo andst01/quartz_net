@@ -58,7 +58,12 @@ namespace MigracaoWorkerService.Service.Mappings
 
             builder.Property(x => x.UserName).HasColumnName("USUA_USERNAME");
 
+            //builder.Ignore(x => x.Pessoa)
             builder.Ignore(x => x.Password);
+            builder.Ignore(x => x.Pessoa);
+            builder.Ignore(x => x.ServicoCriacao);
+            builder.Ignore(x => x.ServicoResponsavel);
+            builder.Ignore(x => x.FuncoesUsuarios);
         }
     }
 }
