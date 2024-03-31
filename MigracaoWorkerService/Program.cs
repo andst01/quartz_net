@@ -98,6 +98,8 @@ namespace MigracaoWorkerService
                    services.AddSingleton<FuncionarioJob>();
                    services.AddSingleton<FornecedorQueueJob>();
                    services.AddSingleton<FornecedorJob>();
+                   services.AddSingleton<EmpresaQueueJob>();
+                   services.AddSingleton<EmpresaJob>();
                    
 
 

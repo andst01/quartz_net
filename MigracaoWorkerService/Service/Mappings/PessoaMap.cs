@@ -52,7 +52,7 @@ namespace MigracaoWorkerService.Service.Mappings
            // builder.Ignore(x => x.UnidadeVenda);
            // builder.Ignore(x => x.Usuario);
            // builder.Ignore(x => x.Funcionario);
-            builder.Ignore(x => x.Empresa);
+           // builder.Ignore(x => x.Empresa);
         }
     }
 }

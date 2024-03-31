@@ -35,8 +35,8 @@ namespace MigracaoWorkerService.Service.Mappings
                 .WithOne(x => x.Empresa)
                 .HasForeignKey(f => f.IdEmpresa);
 
-            builder.Ignore(x => x.Pessoa);
-            builder.Ignore(x => x.UnidadeVendas);
+            //builder.Ignore(x => x.Pessoa);
+            //builder.Ignore(x => x.UnidadeVendas);
         }
     }
 }
