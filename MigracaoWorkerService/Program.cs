@@ -100,6 +100,12 @@ namespace MigracaoWorkerService
                    services.AddSingleton<FornecedorJob>();
                    services.AddSingleton<EmpresaQueueJob>();
                    services.AddSingleton<EmpresaJob>();
+                   services.AddSingleton<UnidadeVendaQueueJob>();
+                   services.AddSingleton<UnidadeVendaJob>();
+                   services.AddSingleton<CargoQueueJob>();
+                   services.AddSingleton<CargoJob>();
+                   services.AddSingleton<CargoFuncionarioQueueJob>();
+                   services.AddSingleton<CargoFuncionarioJob>();
                    
 
 

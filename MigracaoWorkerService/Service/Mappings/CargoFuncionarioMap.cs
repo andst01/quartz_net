@@ -35,8 +35,8 @@ namespace MigracaoWorkerService.Service.Mappings
             //   .WithMany(x => x.CargosFuncionario)
             //   .HasForeignKey(x => x.IdCargo);
 
-            builder.Ignore(x => x.Cargo);
-            builder.Ignore(x => x.Funcionario);
+           // builder.Ignore(x => x.Cargo);
+           // builder.Ignore(x => x.Funcionario);
         }
     }
 }

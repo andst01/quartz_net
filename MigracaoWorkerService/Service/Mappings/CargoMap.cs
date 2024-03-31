@@ -28,7 +28,7 @@ namespace MigracaoWorkerService.Service.Mappings
                     .HasForeignKey(x => x.IdCargo)
                     .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Ignore(x => x.CargosFuncionario);
+           // builder.Ignore(x => x.CargosFuncionario);
 
         }
     }

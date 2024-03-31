@@ -39,7 +39,7 @@ namespace MigracaoWorkerService.Service.Mappings
 
             builder.Ignore(x => x.Atendentes);
             //builder.Ignore(x => x.Pessoa);
-            builder.Ignore(x => x.CargosFuncionario);
+            //builder.Ignore(x => x.CargosFuncionario);
             builder.Ignore(x => x.ResponsaveisServico);
             //builder.Ignore(x => x.Vendas);
 
