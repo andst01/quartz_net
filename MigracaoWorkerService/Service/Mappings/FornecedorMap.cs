@@ -33,7 +33,7 @@ namespace MigracaoWorkerService.Service.Mappings
 
 
 
-            builder.Ignore(x => x.Pessoa);
+           // builder.Ignore(x => x.Pessoa);
         }
     }
 }

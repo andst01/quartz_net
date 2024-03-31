@@ -46,12 +46,12 @@ namespace MigracaoWorkerService.Service.Mappings
               .HasForeignKey<UnidadeVenda>(k => k.IdPessoa);
 
 
-            builder.Ignore(x => x.Fornecedor);
+           // builder.Ignore(x => x.Fornecedor);
            // builder.Ignore(x => x.Endereco);
-            builder.Ignore(x => x.Cliente);
+           // builder.Ignore(x => x.Cliente);
            // builder.Ignore(x => x.UnidadeVenda);
            // builder.Ignore(x => x.Usuario);
-            builder.Ignore(x => x.Funcionario);
+           // builder.Ignore(x => x.Funcionario);
             builder.Ignore(x => x.Empresa);
         }
     }

@@ -1,31 +1,30 @@
 ﻿using Microsoft.Extensions.Logging;
 using MigracaoWorkerService.Service.Models.Execute;
 using MigracaoWorkerService.Service.Repository.Execute.Interface;
-using MongoDB.Driver.Core.Operations;
 using Quartz;
 using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MigracaoWorkerService.Jobs
 {
-    public class FuncionarioQueueJob : IJob
+    public class FornecedorQueueJob : IJob
     {
-        private readonly IFuncionarioRepository _repository;
-        private readonly ILogger<FuncionarioQueueJob> _logger;
 
-        private List<Funcionario> lista { get; set; }
+        private readonly IFornecedorRepository _repository;
+        private readonly ILogger<FornecedorQueueJob> _logger;
+
+        private List<Fornecedor> lista { get; set; }
 
         private int qtdRegistros { get; set; } = 0;
 
         private int contador { get; set; } = 0;
 
-        public FuncionarioQueueJob(IFuncionarioRepository repository, 
-                                  ILogger<FuncionarioQueueJob> logger)
+        public FornecedorQueueJob(IFornecedorRepository repository,
+                                  ILogger<FornecedorQueueJob> logger)
         {
             _repository = repository;
             _logger = logger;
@@ -33,29 +32,26 @@ namespace MigracaoWorkerService.Jobs
 
         public async Task Execute(IJobExecutionContext context)
         {
-
             var retorno = _repository.ObterTodos().ToList();
             qtdRegistros = retorno.Count();
 
             //if (qtdRegistros == 0)
             //{
-            //    lista = new List<Funcionario>()
+            //    lista = new List<Fornecedor>()
             //    {
-            //        new Funcionario()
+            //        new Fornecedor()
             //        {
-            //            IdPessoa = 6,
-            //            CPF = "5469825281612",
-            //            Nome = "Alex Xavier da Silva",
-            //            DataNascimento = DateTime.Parse("17/05/1982", CultureInfo.GetCultureInfo("pt-br")),
-            //            RG = "97265329"
+            //            RazaoSocial = "José Olímpio",
+            //            NomeFantasia = "José Olímpio",
+            //            CNPJ = "5698120561289",
+            //            IdPessoa = 13
             //        },
-            //        new Funcionario()
+            //        new Fornecedor()
             //        {
-            //            IdPessoa = 10,
-            //            CPF = "85691573791",
-            //            Nome = "Ana Beatriz Pacheco",
-            //            DataNascimento = DateTime.Parse("23/07/1982", CultureInfo.GetCultureInfo("pt-br")),
-            //            RG = "18256792"
+            //            RazaoSocial = "Maria Rita",
+            //            NomeFantasia = "Maria Rita",
+            //            CNPJ = "78819156129458",
+            //            IdPessoa = 14
             //        },
             //    };
 
@@ -65,9 +61,8 @@ namespace MigracaoWorkerService.Jobs
             //    }
 
             //    await _repository.Save();
-
-
             //}
+
 
             if (qtdRegistros > contador)
             {
@@ -77,7 +72,7 @@ namespace MigracaoWorkerService.Jobs
                     using var connection = factory.CreateConnection();
                     using var channel = connection.CreateModel();
 
-                    channel.QueueDeclare(queue: "funcionarioQueue",
+                    channel.QueueDeclare(queue: "fornecedorQueue",
                             durable: false,
                             exclusive: false,
                             autoDelete: false,
@@ -88,7 +83,7 @@ namespace MigracaoWorkerService.Jobs
 
                     channel.BasicPublish(
                         exchange: "",
-                        routingKey: "funcionarioQueue",
+                        routingKey: "fornecedorQueue",
                         body: body,
                         basicProperties: null);
 
